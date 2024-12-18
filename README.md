@@ -24,7 +24,7 @@ npm run start
 4)Get all users (GET)
   /api/user/all-users
 
-5) Get signle user: (GET)
+5) Get signle user (GET)
   /api/user/single-user/user_id
 
 6) Update single user (PUT)
