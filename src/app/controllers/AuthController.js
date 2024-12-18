@@ -2,7 +2,7 @@ const User = require("../models/User");
 const { default: Hash } = require("../utils/Hash");
 const { default: Token } = require("../utils/Token");
 
-class AuthController {
+export class AuthController {
   static signup = async (req, res) => {
     try {
       const {
@@ -78,8 +78,6 @@ class AuthController {
         .json({ message: "Server error", error: error.message });
     }
   };
-
-
 }
 
 module.exports = AuthController;
