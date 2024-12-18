@@ -1,8 +1,8 @@
-const User = require("../models/User");
-const { default: Hash } = require("../utils/Hash");
-const { default: Token } = require("../utils/Token");
+import { User } from "../models/User.js";
+import Hash from "../utils/Hash.js";
+import Token from "../utils/Token.js";
 
-export class AuthController {
+class AuthController {
   static signup = async (req, res) => {
     try {
       const {
@@ -33,7 +33,7 @@ export class AuthController {
 
       await user.save();
 
-      const token = Token.encode(user);
+      const token = Token.encode(user.toObject());
 
       return res.status(201).json({
         message: "Registration succesfull",
@@ -44,7 +44,7 @@ export class AuthController {
     } catch (error) {
       return res
         .status(500)
-        .json({ message: "Server error", error: error.message });
+        .json({ message: "Server error", error: "server error" });
     }
   };
 
@@ -61,15 +61,13 @@ export class AuthController {
       if (!compare) {
         return res.status(409).json({ message: "Wrong password" });
       }
-      let userObj = user.toObject();
-      delete userObj.password;
 
-      const token = Token.encode(userObj);
+      const token = Token.encode(user.toObject());
 
       return res.status(200).json({
         message: "Login succesfull",
         status: true,
-        user: userObj,
+        user: user,
         access_token: token,
       });
     } catch (error) {
@@ -80,4 +78,4 @@ export class AuthController {
   };
 }
 
-module.exports = AuthController;
+export default AuthController;
