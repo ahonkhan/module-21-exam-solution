@@ -21,7 +21,7 @@ npm run start
 3) Get auth user info (GET)
    /api/auth/info
 
-4)Get all users (GET)
+4) Get all users (GET)
   /api/user/all-users
 
 5) Get signle user (GET)
@@ -30,5 +30,5 @@ npm run start
 6) Update single user (PUT)
    /api/user/user_id
 
-7)Delete signle user (DELETE)
+7) Delete signle user (DELETE)
   /api/user/user_id
